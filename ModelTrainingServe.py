@@ -35,12 +35,22 @@ def start_training_model(pretrained_model_path,train_data_path,spliced_data_save
         texts = [] #拼接后的数据
         for conversion in conversions_data:
             chat_history = ''
-            for sentence in conversion["conversations"]:
-                role = role_name if sentence["role"] == "gpt" else "其他角色"
-                if role == role_name and len(chat_history) > 1:
-                    text = train_prompt.format(book_name=book_name,role_name=role_name,chat_history=chat_history,response=sentence["content"])+EOS_TOKEN
+            conversations = conversion.get("conversations", [])# 判断是否存在conversations字段且为list
+            if not isinstance(conversations, list):
+                continue  # 跳过非正常结构
+            for sentence in conversations:
+                if not isinstance(sentence, dict):
+                    continue
+                role = sentence.get("role", "")
+                content = sentence.get("content", "")
+                if not isinstance(content, str):
+                    continue
+
+                current_role  = role_name if role == "gpt" else "其他角色"
+                if current_role  == role_name and len(chat_history) > 1:
+                    text = train_prompt.format(book_name=book_name,role_name=role_name,chat_history=chat_history,response=content)+EOS_TOKEN
                     texts.append(text)
-                chat_history += f"{role}:{sentence['content']}\n"
+                chat_history += f"{current_role}:{content}\n"
         dataset = {"text":texts}
     with open(spliced_data_save_path,"w",encoding='utf-8') as f: #保存拼接好的数据后续可以查看
         json.dump(dataset,f,ensure_ascii=False,indent=2)
