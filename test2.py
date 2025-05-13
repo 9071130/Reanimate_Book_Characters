@@ -14,4 +14,4 @@ broken_json = '''
 try:
     json.loads(broken_json)
 except Exception as e:
-    print("格式出错",{e})
+    print("格式出错1",{e})
