@@ -1,0 +1,17 @@
+bitsandbytes==0.45.5
+datasets==3.3.2
+fastapi==0.115.12
+numpy==2.2.5
+openai==1.78.1
+packaging==25.0
+pandas==2.2.3
+pydantic==2.11.4
+Requests==2.32.3
+torch==2.6.0+cu118
+transformers==4.49.0
+trl==0.15.2
+unsloth==2025.3.19
+unsloth_zoo==2025.3.17
+uvicorn==0.34.2
+vllm==0.8.5.post1
+wandb==0.19.11
