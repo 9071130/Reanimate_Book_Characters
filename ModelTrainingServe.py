@@ -17,7 +17,8 @@ def start_training_model(pretrained_model_path,train_data_path,spliced_data_save
     load_in_4bit = True #使用4bit量化，节省内存
     #加载预训练模型，并获取分词器即将文本转为token的工具，模型只能识别token
     model, tokenizer= FastLanguageModel.from_pretrained(
-        model_name = "model_file/pretrained_model/DeepSeek-R1-Distill-Qwen-1.5B",
+        # model_name = "model_file/pretrained_model/DeepSeek-R1-Distill-Qwen-1.5B",
+        model_name = pretrained_model_path,
         max_seq_length = max_seq_length,
         dtype = dtype,
         load_in_4bit = load_in_4bit
@@ -122,6 +123,7 @@ def start_training_model(pretrained_model_path,train_data_path,spliced_data_save
     model.save_pretrained_merged(f"model_file/finetuned_model/{task_id}",tokenizer, save_method = "merged_16bit")
 
 def write_status(task_id,status): #保存任务状态供前端查询
+    os.makedirs("model_tasks_status",exist_ok=True)
     status_path = f"model_tasks_status/{task_id}.json"
     try:
         if os.path.exists(status_path):

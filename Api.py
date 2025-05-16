@@ -102,6 +102,7 @@ async def start_training_model(data:TrainModelRequest):
     subprocess.Popen([  #执行训练脚本
         "python",
         "ModelTrainingServe.py",
+        "--pretrained_model_path",data.pretrained_model_path,
         "--train_data_path", f"output_text_data/train_data/{data.task_id}.json",
         "--task_id",data.task_id,
         "--book_name", data.book_name,
