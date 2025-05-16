@@ -7,8 +7,7 @@ packaging==25.0
 pandas==2.2.3
 pydantic==2.11.4
 Requests==2.32.3
-torch==2.6.0+cu118
-transformers==4.49.0
+transformers>=4.51.1
 trl==0.15.2
 unsloth==2025.3.19
 unsloth_zoo==2025.3.17
