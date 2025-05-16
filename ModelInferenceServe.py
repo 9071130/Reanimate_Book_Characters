@@ -39,7 +39,7 @@ class ModelManager:
     def generate_response(self, input_text:str) -> str:
         if self.model is None or self.tokenizer is None:
             raise RuntimeError("模型尚未加载，请先调用 load_model")
-        system_prompt = """你是一个中文对话助手，请根据用户输入生成简洁、自然、有逻辑的中文回答，一定不要重复用户的输入，并且只需给出一次回答。
+        system_prompt = """你是一个中文对话助手，请根据用户输入生成简洁、自然、有逻辑的中文回答，一定不要重复用户的输入，一定不要输出英文，并且只需给出一次回答。
             请严格按照以下固定格式返回内容。
                 用户输入：{input_text}
                 ###AI的回复：

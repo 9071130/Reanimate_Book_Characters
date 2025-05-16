@@ -97,7 +97,7 @@ def start_training_model(pretrained_model_path,train_data_path,spliced_data_save
             per_device_train_batch_size=32,  # 每个设备一次处理/向前传播的数据条数
             gradient_accumulation_steps=2,  # 累积多少个小btach后再进行反向传播更新梯度，总的batch_size就是上下两个数相乘
             warmup_steps=5,  # 预热步数，训练开始时学习率逐渐增加的步数
-            max_steps=math.ceil(dataset_length*2/64),  # 最大训练步数
+            max_steps=math.ceil(dataset_length*3/64),  # 最大训练步数
             learning_rate=2e-4,  # 学习率，模型学习新知识的速度
             fp16=not is_bfloat16_supported(),  # 是否使用 fp16 格式加速训练（如果环境不支持 bfloat16）
             bf16=is_bfloat16_supported(),  # 是否使用 bfloat16 格式加速训练（如果环境支持）
