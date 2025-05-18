@@ -14,3 +14,5 @@ unsloth_zoo==2025.3.17
 uvicorn==0.34.2
 vllm==0.8.5.post1
 wandb==0.19.11
+langchain==0.1.12
+langchain-community==0.0.27

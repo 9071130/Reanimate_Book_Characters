@@ -29,10 +29,10 @@ file_name = None #小说文件名
 @APP.post('/upload_audio')
 #类型是 UploadFile，它是 FastAPI 提供的一个类，封装了上传的文件
 async def upload_audio(audio: UploadFile = File(...), audio_name: str = Form(...)):
+    os.makedirs("ref_audio",exist_ok=True)
     contents = await audio.read()
-    #以二进制写入模式写入文件，用于非文本写入
     audio_id = str(uuid.uuid4())
-    with open(f"ref_audio/{audio_id}.wav",'wb') as f:
+    with open(f"ref_audio/{audio_id}.wav",'wb') as f: #以二进制写入模式写入文件，用于非文本写入
         f.write(contents)
     return {"status":200, "audio_id":audio_id, "msg":"录音保存成功"}
 
