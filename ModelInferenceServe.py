@@ -42,7 +42,7 @@ class ModelManager:
             pad_token_id=self.tokenizer.eos_token_id
         )
         
-        # 创建 LangChain 组件
+        # 将huggingface加载的模型转换为langchain所接受的格式，然后langchain的各个功能才能为模型所用
         llm = HuggingFacePipeline(pipeline=pipe)
         
         # 创建记忆存储实例
@@ -59,7 +59,7 @@ class ModelManager:
             {history}
 
             用户输入：{input}
-            助手：
+            AI回复：
         """
         
         prompt = PromptTemplate(
@@ -69,8 +69,8 @@ class ModelManager:
         
         # 创建输出解析器，用于解析模型的输出，只取助手：后面的内容，也就是AI的真正回复。这个模型的原始输出会将提示词什么的全部输出出来。
         output_parser = RegexParser(
-            regex=r"助手：(.*?)(?=\n|$)",
-            output_keys=["response"]
+            regex=r"AI回复：(.*?)(?=\n|$)",
+            output_keys=["response"] #通过response关键字取出真正回复
         )
         
         # 创建对话链，将提示词模板和输出解析器结合起来。
