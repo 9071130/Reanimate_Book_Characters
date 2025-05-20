@@ -22,27 +22,28 @@
 
 打开网站后点击算力市场，选择任意地区(建议西北，便宜)，选择4090，点击租用。环境选择如下图所示，之后点击创建并开机。
 
-![image-20250520211246258](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520211246258.png)
+![图片](https://github.com/user-attachments/assets/ca37f7c3-a09c-4560-af01-43776263955f)
 
 2.利用vscode进行SSH连接
 
 在vocde扩展商店中下载Remote - SSH，之后选择新建远程。
 
-![image-20250520211657017](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520211657017.png)
+![图片](https://github.com/user-attachments/assets/db84d8e8-6683-40f5-bffb-4abe953d32cc)
 
 输入AutoDL给你的账号密码。
 
-![image-20250520212500708](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520212500708.png)
+![图片](https://github.com/user-attachments/assets/a38dbb78-b2fc-4456-9c88-d28758544234)
+
 
 进入SSH后，打开文件夹autodl-temp，这是在数据盘的文件夹，后面如果可以扩容，更方便。
 
-![image-20250520212920266](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520212920266.png)
+![图片](https://github.com/user-attachments/assets/70e79b99-373f-4558-84ef-6f625a205805)
 
 3.克隆项目，安装依赖
 
 进入文件夹后，打开终端，输入命令`conda init`,再删除当前终端，重新打开。
 
-![image-20250520213247264](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520213247264.png)
+![图片](https://github.com/user-attachments/assets/1e839aa7-2b99-4fb7-ac2c-2aa31b80cfe8)
 
 重新打开终端后，会发现当前处在一个叫base的conda环境中，输入以下命令:
 
@@ -56,7 +57,7 @@
 
 启动项目:`uvicorn Api:APP --reload --host 0.0.0.0 --port 8001`，如果看到如下页面就说明后端服务启动成功了。
 
-![image-20250520214226947](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520214226947.png)
+![图片](https://github.com/user-attachments/assets/4c5faded-dab8-41ab-be41-f9427b02d668)
 
 ### 第二步，运行前端
 
@@ -70,13 +71,10 @@
 
 运行项目:`npm run dev`,看到如下提示就说明前端项目启动完成了，之后就像视频一样操作就可以了。
 
-![image-20250520221500619](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250520221500619.png)
+![图片](https://github.com/user-attachments/assets/1bdd49af-fa9e-43af-b6b7-901d23e21f8d)
 
 # 效果演示
 
 我用了大概2800条的对话数据，训练了三轮，基座模型是Qwen2.5-3B，感觉效果还不错。
 
-![image-20250521002450130](C:\Users\whp\AppData\Roaming\Typora\typora-user-images\image-20250521002450130.png)
-
-
-
+![图片](https://github.com/user-attachments/assets/33b8902b-905a-4304-b7e2-eb44178f0b82)

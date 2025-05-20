@@ -21,10 +21,10 @@ class ModelManager:
         if model_path == self.model_path:
             return #模型路径相同，不重新加载
         print("切换模型为",model_path)
-        # self.tokenizer = AutoTokenizer.from_pretrained(f"model_file/finetuned_model/{model_path}")
-        # self.model = AutoModelForCausalLM.from_pretrained(f"model_file/finetuned_model/{model_path}")
-        self.tokenizer = AutoTokenizer.from_pretrained(f"model_file/finetuned_model/Qwen2.5-0.5B-Instruct")
-        self.model = AutoModelForCausalLM.from_pretrained(f"model_file/finetuned_model/Qwen2.5-0.5B-Instruct")
+        self.tokenizer = AutoTokenizer.from_pretrained(f"model_file/finetuned_model/{model_path}")
+        self.model = AutoModelForCausalLM.from_pretrained(f"model_file/finetuned_model/{model_path}")
+        # self.tokenizer = AutoTokenizer.from_pretrained(f"model_file/finetuned_model/Qwen2.5-0.5B-Instruct")
+        # self.model = AutoModelForCausalLM.from_pretrained(f"model_file/finetuned_model/Qwen2.5-0.5B-Instruct")
         self.model.to(self.device)
         self.model.eval() #将模型设置为推理模式
         self.model_path = model_path
