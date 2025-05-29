@@ -59,8 +59,7 @@ class ModelManager:
             {history}
 
             用户输入：{input}
-            AI回复：
-        """
+            AI回复："""
         
         prompt = PromptTemplate(
             input_variables=["history", "input"], #输入变量，用于替换模板中的占位符。
